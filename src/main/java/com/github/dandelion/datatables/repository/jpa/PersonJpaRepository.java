@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
@@ -52,7 +53,7 @@ public class PersonJpaRepository implements PersonRepository {
 //            public void run() {
 //                try {
 //                    log.info("Checking mail");
-//                    String[] persons = CheckingMails.check("lpgenerator.bot@gmail.com", "herzvmsogofgycwa");
+//                    String[] persons = mailChecker.check();
 //                    List<Person> personCollection = PersonExtractor.extract(persons);
 //                    addPersons(personCollection);
 //                } catch (Exception e) {
