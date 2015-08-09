@@ -1,1 +1,0 @@
-var predefinedValues = ['Twitter', 'Facebook', 'Google', 'Amazon', 'Intel', 'Microsoft', 'Yahoo'];

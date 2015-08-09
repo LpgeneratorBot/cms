@@ -34,20 +34,6 @@ public class AjaxController {
 	@Autowired
 	private PersonService personService;
 
-	@RequestMapping(value = "/persons-no-server-side")
-	public @ResponseBody
-	List<Person> findAll() {
-		return personService.findLimited(200);
-	}
-
-	@RequestMapping(value = "/persons-no-spring")
-	public @ResponseBody
-	DatatablesResponse<Person> findAllForDataTables(HttpServletRequest request) {
-		DatatablesCriterias criterias = DatatablesCriterias.getFromRequest(request);
-		DataSet<Person> persons = personService.findPersonsWithDatatablesCriterias(criterias);
-		return DatatablesResponse.build(persons, criterias);
-	}
-
 	@RequestMapping(value = "/persons")
 	public @ResponseBody
 	DatatablesResponse<Person> findAllForDataTablesFullSpring(@DatatablesParams DatatablesCriterias criterias) {

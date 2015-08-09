@@ -1,0 +1,1 @@
+INSERT INTO person (id, name, phone, mail, city, status) VALUES (1,'Test name', '999 999 99 99',  'mail@mail.ru', 'SPb', 'new');

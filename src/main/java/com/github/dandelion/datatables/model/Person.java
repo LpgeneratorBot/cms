@@ -33,7 +33,7 @@ public class Person {
 	private Date date;
 
 	@Column
-	private String status;
+	private String status = "Новый";
 	
 	public Person() {
 	}

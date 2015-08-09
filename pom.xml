@@ -134,7 +134,7 @@
                 <configuration>
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>80</port>
+                            <port>8080</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
@@ -151,7 +151,7 @@
                 <version>2.0</version>
                 <configuration>
                     <server>tomcat-development-server</server>
-                    <port>80</port>
+                    <port>8080</port>
                     <path>/</path>
                 </configuration>
             </plugin>

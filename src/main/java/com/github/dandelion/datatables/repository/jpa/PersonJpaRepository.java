@@ -1,30 +1,23 @@
 package com.github.dandelion.datatables.repository.jpa;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-
+import com.github.dandelion.datatables.core.ajax.ColumnDef;
+import com.github.dandelion.datatables.core.ajax.DatatablesCriterias;
 import com.github.dandelion.datatables.dataimport.mail.MailChecker;
-import com.github.dandelion.datatables.dataimport.mail.PersonExtractor;
+import com.github.dandelion.datatables.model.Person;
+import com.github.dandelion.datatables.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.github.dandelion.datatables.core.ajax.ColumnDef;
-import com.github.dandelion.datatables.core.ajax.DatatablesCriterias;
-import com.github.dandelion.datatables.model.Person;
-import com.github.dandelion.datatables.repository.PersonRepository;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * <p/>
@@ -94,9 +87,9 @@ public class PersonJpaRepository implements PersonRepository {
 
         try {
             log.info("Checking mail");
-            String[] persons = mailChecker.check();
-            List<Person> personCollection = PersonExtractor.extract(persons);
-            addPersons(personCollection);
+//            String[] persons = mailChecker.check();
+//            List<Person> personCollection = PersonExtractor.extract(persons);
+//            addPersons(personCollection);
         } catch (Exception e) {
             log.error("Checking mail failed", e);
         }
@@ -161,7 +154,8 @@ public class PersonJpaRepository implements PersonRepository {
      * @return the total count of persons.
      */
     public Long getTotalCount() {
-        Query query = entityManager.createQuery("SELECT COUNT(p) FROM Person p");
+        Query query = entityManager.createQuery("SELECT COUNT(p) FROM Per" +
+                "son p");
         return (Long) query.getSingleResult();
     }
 

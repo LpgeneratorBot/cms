@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+
+<head th:include="common/head::head">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+            $(document).ready(function () {
+                $('#myTableId').dataTable().makeEditable({
+                    sDeleteHttpMethod: "DELETE",
+                    sDeleteURL: "/ajax/persons",
+                    sDeleteRowButtonId: "btnDeleteRow"
+                });
+            });
+        /*]]>*/
+    </script>
+</head>
+<body>
+<div th:replace="common/navbar::navbar"></div>
+<button id="btnDeleteRow">Delete selected person</button>
+<div class="container">
+
+    <div class="row-fluid">
+        <div class="span12">
+
+            <table id="myTableId" dt:table="true" dt:url="@{/ajax/persons}"
+                   dt:serverside="true" dt:reloadSelector="#reload"  dt:ext="editable" dt:editable="true" class="display">
+                <thead>
+                <tr>
+                    <th dt:property="id">#</th>
+                    <th dt:property="name">ФИО</th>
+                    <th dt:property="mail">Почта</th>
+                    <th dt:property="phone">Телефон</th>
+                    <th dt:property="city">Город</th>
+                    <th dt:property="date">Дата</th>
+                    <th dt:property="status">Статус</th>
+                </tr>
+                </thead>
+            </table>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
